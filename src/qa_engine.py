@@ -1,12 +1,12 @@
 import time
 from collections import OrderedDict
 from dataclasses import dataclass, replace
-from typing import Protocol
+from typing import Callable, Protocol
 
 from langchain_core.documents import Document
 
 from src.llm import ChatModel, ZhipuChatModel
-from src.retrieval import tokenize_for_retrieval
+from src.retrieval import HybridRetriever, is_short_query, tokenize_for_retrieval
 from src.vector_store import ChromaVectorStore
 
 
@@ -19,6 +19,7 @@ Rules:
 1. If the context does not contain relevant information, answer: 没有在已上传文档中找到相关信息。
 2. Keep the answer concise and accurate, usually no more than 3 sentences.
 3. Include source file names after the answer.
+4. For field/value questions, prefer the exact value from the most relevant title, paragraph, or table row.
 
 [CONTEXT]
 {context}
@@ -118,15 +119,47 @@ class KeywordReranker:
         if not query_tokens:
             return documents
 
-        def score(document: Document) -> tuple[float, float]:
-            doc_tokens = tokenize_for_retrieval(document.page_content)
+        compact_question = _compact_text(question)
+
+        def score(document: Document) -> tuple[float, float, float]:
+            text = _retrieval_text(document)
+            doc_tokens = set(tokenize_for_retrieval(text))
             overlap = len(query_tokens & set(doc_tokens))
             coverage = overlap / max(len(query_tokens), 1)
             distance = _optional_float(document.metadata.get("distance"))
             distance_bonus = 0.0 if distance is None else -distance
-            return (coverage, distance_bonus)
+            compact_text = _compact_text(text)
+            exact_phrase_bonus = 1.0 if compact_question and compact_question in compact_text else 0.0
+            heading_bonus = 0.2 if _has_overlap(question, str(document.metadata.get("heading_path", ""))) else 0.0
+            structured_bonus = 0.25 if document.metadata.get("section_type") in {"table_row", "field_block", "heading"} else 0.0
+            colon_bonus = 0.15 if is_short_query(question) and ("：" in text or ":" in text) else 0.0
+            field_key_bonus = 0.25 if _matches_field_keys(question, document) else 0.0
+            total_score = coverage * 2.0 + exact_phrase_bonus + heading_bonus + structured_bonus + colon_bonus + field_key_bonus
+            return (total_score, coverage, distance_bonus)
 
-        return sorted(documents, key=score, reverse=True)
+        scored_documents = []
+        for document in documents:
+            total_score, coverage, distance_bonus = score(document)
+            scored_documents.append(
+                _copy_document_with_metadata(
+                    document,
+                    {
+                        "rerank_score": round(total_score, 6),
+                        "query_coverage": round(coverage, 6),
+                        "distance_bonus": round(distance_bonus, 6),
+                    },
+                )
+            )
+
+        return sorted(
+            scored_documents,
+            key=lambda document: (
+                float(document.metadata.get("rerank_score", 0.0)),
+                float(document.metadata.get("query_coverage", 0.0)),
+                float(document.metadata.get("distance_bonus", 0.0)),
+            ),
+            reverse=True,
+        )
 
 
 class QAEngine:
@@ -141,6 +174,7 @@ class QAEngine:
         cache: QACache | None = None,
         enable_rerank: bool = True,
         reranker: KeywordReranker | None = None,
+        keyword_documents_provider: Callable[[], list[Document]] | None = None,
     ) -> None:
         self.vector_store = vector_store
         self.chat_model = chat_model or ZhipuChatModel()
@@ -151,6 +185,7 @@ class QAEngine:
         self.cache = cache if cache is not None else InMemoryQACache()
         self.enable_rerank = enable_rerank
         self.reranker = reranker or KeywordReranker()
+        self.keyword_documents_provider = keyword_documents_provider
 
     def answer(self, question: str) -> QAResult:
         if not question.strip():
@@ -161,8 +196,8 @@ class QAEngine:
         if cached is not None:
             return cached
 
-        retrieved_documents = self.vector_store.similarity_search(question, top_k=self.retrieval_top_k)
-        retrieved_documents = self._filter_by_similarity(retrieved_documents)
+        retrieved_documents = self._retrieve_documents(question)
+        retrieved_documents = self._filter_by_similarity(question, retrieved_documents)
         if self.enable_rerank:
             retrieved_documents = self.reranker.rerank(question, retrieved_documents)
         retrieved_documents = retrieved_documents[: self.top_k]
@@ -183,7 +218,8 @@ class QAEngine:
         context_documents = self._limit_context(retrieved_documents)
         prompt = build_qa_prompt(question, context_documents)
         answer = self.chat_model.generate(prompt)
-        sources = extract_sources(context_documents)
+        supporting_documents = [] if _is_no_context_answer(answer) else select_supporting_documents(question, answer, context_documents)
+        sources = extract_sources(supporting_documents)
 
         result = QAResult(
             question=question,
@@ -211,7 +247,35 @@ class QAEngine:
             total_chars += content_length
         return selected
 
-    def _filter_by_similarity(self, documents: list[Document]) -> list[Document]:
+    def _retrieve_documents(self, question: str) -> list[Document]:
+        if self.keyword_documents_provider is not None:
+            keyword_documents = self._keyword_search(question)
+            if keyword_documents:
+                return keyword_documents
+        return self.vector_store.similarity_search(question, top_k=self._candidate_retrieval_top_k(question))
+
+    def _keyword_search(self, question: str) -> list[Document]:
+        if self.keyword_documents_provider is None:
+            return []
+        documents = self.keyword_documents_provider()
+        if not documents:
+            return []
+        retriever = HybridRetriever(
+            vector_store=self.vector_store,
+            bm25_documents=documents,
+            vector_weight=0.45,
+            bm25_weight=0.55,
+        )
+        return retriever.search(
+            question,
+            top_k=self._candidate_retrieval_top_k(question),
+            bm25_top_k=max(self._candidate_retrieval_top_k(question) * 2, self.top_k + 8),
+            vector_top_k=max(self._candidate_retrieval_top_k(question), self.top_k + 4),
+        )
+
+    def _filter_by_similarity(self, question: str, documents: list[Document]) -> list[Document]:
+        if is_short_query(question):
+            return documents
         if self.min_similarity_score is None:
             return documents
         filtered = []
@@ -224,6 +288,11 @@ class QAEngine:
             if similarity_score >= self.min_similarity_score:
                 filtered.append(document)
         return filtered
+
+    def _candidate_retrieval_top_k(self, question: str) -> int:
+        if is_short_query(question):
+            return max(self.retrieval_top_k, self.top_k + 8)
+        return max(self.retrieval_top_k, self.top_k + 4)
 
     def _cache_key(self, question: str) -> str:
         normalized = " ".join(question.lower().split())
@@ -268,6 +337,26 @@ def extract_sources(documents: list[Document]) -> list[SourceInfo]:
     return sources
 
 
+def select_supporting_documents(question: str, answer: str, documents: list[Document], max_sources: int = 2) -> list[Document]:
+    if not documents:
+        return []
+
+    scored: list[tuple[float, Document]] = []
+    for document in documents:
+        score = _support_score(question, answer, document)
+        if score > 0:
+            scored.append((score, document))
+
+    if not scored:
+        return documents[:1]
+
+    scored.sort(key=lambda item: item[0], reverse=True)
+    best_score = scored[0][0]
+    threshold = max(best_score * 0.75, best_score - 1.5)
+    selected = [document for score, document in scored if score >= threshold]
+    return selected[:max_sources]
+
+
 def _optional_int(value) -> int | None:
     if value is None:
         return None
@@ -284,3 +373,54 @@ def _optional_float(value) -> float | None:
         return float(value)
     except (TypeError, ValueError):
         return None
+
+
+def _is_no_context_answer(answer: str) -> bool:
+    normalized = answer.strip().lower()
+    no_context_markers = [
+        "没有在已上传文档中找到相关信息",
+        "no relevant information",
+        "no relevant context",
+    ]
+    return any(marker in normalized for marker in no_context_markers)
+
+
+def _support_score(question: str, answer: str, document: Document) -> float:
+    question_tokens = set(tokenize_for_retrieval(question))
+    answer_tokens = set(tokenize_for_retrieval(answer))
+    text = _retrieval_text(document)
+    doc_tokens = set(tokenize_for_retrieval(text))
+    question_overlap = len(question_tokens & doc_tokens)
+    answer_overlap = len(answer_tokens & doc_tokens)
+    exact_phrase_bonus = 1.0 if _compact_text(question) and _compact_text(question) in _compact_text(text) else 0.0
+    structured_bonus = 0.35 if document.metadata.get("section_type") in {"table_row", "field_block"} else 0.0
+    return question_overlap * 2.0 + answer_overlap * 0.8 + exact_phrase_bonus + structured_bonus
+
+
+def _matches_field_keys(question: str, document: Document) -> bool:
+    field_keys = str(document.metadata.get("field_keys", ""))
+    if not field_keys:
+        return False
+    compact_question = _compact_text(question)
+    return any(
+        key and (_compact_text(key) in compact_question or compact_question in _compact_text(key))
+        for key in field_keys.split("|")
+    )
+
+
+def _has_overlap(text: str, candidate: str) -> bool:
+    return bool(set(tokenize_for_retrieval(text)) & set(tokenize_for_retrieval(candidate)))
+
+
+def _retrieval_text(document: Document) -> str:
+    return str(document.metadata.get("retrieval_text") or document.page_content)
+
+
+def _compact_text(text: str) -> str:
+    return "".join(text.split())
+
+
+def _copy_document_with_metadata(document: Document, extra_metadata: dict[str, object]) -> Document:
+    metadata = dict(document.metadata or {})
+    metadata.update(extra_metadata)
+    return Document(page_content=document.page_content, metadata=metadata)

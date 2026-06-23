@@ -2,13 +2,13 @@
   "summary": {
     "document_count": 8,
     "question_count": 20,
-    "retrieval_accuracy": 0.9,
-    "answer_accuracy": 0.85,
-    "avg_response_ms": 6.76,
-    "p95_response_ms": 7.66,
-    "max_response_ms": 7.8,
-    "avg_upload_ms": 46.68,
-    "total_runtime_ms": 614.67,
+    "retrieval_accuracy": 0.95,
+    "answer_accuracy": 0.9,
+    "avg_response_ms": 13.45,
+    "p95_response_ms": 19.34,
+    "max_response_ms": 23.28,
+    "avg_upload_ms": 48.61,
+    "total_runtime_ms": 766.41,
     "performance_requirement": "PASS",
     "notes": [
       "Uses local deterministic embeddings and a deterministic extractive chat model.",
@@ -17,76 +17,76 @@
   },
   "uploaded_documents": [
     {
-      "document_id": "313671ce80a7439b94e3ba24e2ac1170",
+      "document_id": "1bc0d540d9434f15847860b2fa409d88",
       "file_name": "leave_policy.txt",
-      "saved_path": "data\\uploads\\313671ce80a7439b94e3ba24e2ac1170_leave_policy.txt",
+      "saved_path": "data\\uploads\\1bc0d540d9434f15847860b2fa409d88_leave_policy.txt",
       "parsed_documents": 1,
       "chunk_count": 1,
       "vector_count": 1,
-      "upload_ms": 16.85
+      "upload_ms": 13.24
     },
     {
-      "document_id": "77ba1a04ece748788afb43a8df619f55",
+      "document_id": "0637e4fa39014c8f841c31c648c34fbe",
       "file_name": "expense_policy.docx",
-      "saved_path": "data\\uploads\\77ba1a04ece748788afb43a8df619f55_expense_policy.docx",
-      "parsed_documents": 1,
-      "chunk_count": 1,
-      "vector_count": 1,
-      "upload_ms": 46.48
+      "saved_path": "data\\uploads\\0637e4fa39014c8f841c31c648c34fbe_expense_policy.docx",
+      "parsed_documents": 5,
+      "chunk_count": 5,
+      "vector_count": 5,
+      "upload_ms": 36.06
     },
     {
-      "document_id": "e47adf53327f418d8b815509e9183922",
+      "document_id": "cdcb185493574e7f8d53984fc5673698",
       "file_name": "product_manual.pdf",
-      "saved_path": "data\\uploads\\e47adf53327f418d8b815509e9183922_product_manual.pdf",
+      "saved_path": "data\\uploads\\cdcb185493574e7f8d53984fc5673698_product_manual.pdf",
       "parsed_documents": 1,
       "chunk_count": 1,
       "vector_count": 1,
-      "upload_ms": 227.52
+      "upload_ms": 220.04
     },
     {
-      "document_id": "c786e026a9c844a9bd8db4f146e560ce",
+      "document_id": "550462b140d2465da8d4fa0e237a818a",
       "file_name": "vpn_faq.txt",
-      "saved_path": "data\\uploads\\c786e026a9c844a9bd8db4f146e560ce_vpn_faq.txt",
+      "saved_path": "data\\uploads\\550462b140d2465da8d4fa0e237a818a_vpn_faq.txt",
+      "parsed_documents": 1,
+      "chunk_count": 1,
+      "vector_count": 1,
+      "upload_ms": 9.81
+    },
+    {
+      "document_id": "5b9ff5c36eae4d19b00a3aa8d071fa11",
+      "file_name": "security_policy.docx",
+      "saved_path": "data\\uploads\\5b9ff5c36eae4d19b00a3aa8d071fa11_security_policy.docx",
+      "parsed_documents": 5,
+      "chunk_count": 5,
+      "vector_count": 5,
+      "upload_ms": 49.4
+    },
+    {
+      "document_id": "c3899d7fcb6043ccb3da00baa19a001f",
+      "file_name": "support_faq.pdf",
+      "saved_path": "data\\uploads\\c3899d7fcb6043ccb3da00baa19a001f_support_faq.pdf",
+      "parsed_documents": 1,
+      "chunk_count": 1,
+      "vector_count": 1,
+      "upload_ms": 13.0
+    },
+    {
+      "document_id": "cf935efdad48496aa244df83b5c57217",
+      "file_name": "onboarding_guide.txt",
+      "saved_path": "data\\uploads\\cf935efdad48496aa244df83b5c57217_onboarding_guide.txt",
       "parsed_documents": 1,
       "chunk_count": 1,
       "vector_count": 1,
       "upload_ms": 10.12
     },
     {
-      "document_id": "f89fa9fbfaaf400394811b2b1f10fde7",
-      "file_name": "security_policy.docx",
-      "saved_path": "data\\uploads\\f89fa9fbfaaf400394811b2b1f10fde7_security_policy.docx",
-      "parsed_documents": 1,
-      "chunk_count": 1,
-      "vector_count": 1,
-      "upload_ms": 21.25
-    },
-    {
-      "document_id": "5c455d841806478284ac4a7b87834e6d",
-      "file_name": "support_faq.pdf",
-      "saved_path": "data\\uploads\\5c455d841806478284ac4a7b87834e6d_support_faq.pdf",
-      "parsed_documents": 1,
-      "chunk_count": 1,
-      "vector_count": 1,
-      "upload_ms": 12.93
-    },
-    {
-      "document_id": "16ccbdc0bcb8450cbcf4b2a0e7415f88",
-      "file_name": "onboarding_guide.txt",
-      "saved_path": "data\\uploads\\16ccbdc0bcb8450cbcf4b2a0e7415f88_onboarding_guide.txt",
-      "parsed_documents": 1,
-      "chunk_count": 1,
-      "vector_count": 1,
-      "upload_ms": 12.68
-    },
-    {
-      "document_id": "4feaefdbf5614a5fbd44c4937b68faae",
+      "document_id": "4265795656814412b432b7210edd43cc",
       "file_name": "sla_policy.docx",
-      "saved_path": "data\\uploads\\4feaefdbf5614a5fbd44c4937b68faae_sla_policy.docx",
-      "parsed_documents": 1,
-      "chunk_count": 1,
-      "vector_count": 1,
-      "upload_ms": 25.63
+      "saved_path": "data\\uploads\\4265795656814412b432b7210edd43cc_sla_policy.docx",
+      "parsed_documents": 5,
+      "chunk_count": 5,
+      "vector_count": 5,
+      "upload_ms": 37.2
     }
   ],
   "qa_results": [
@@ -100,12 +100,9 @@
       ],
       "answer": "Full-time employees receive 15 annual leave days each calendar year.",
       "source_files": [
-        "leave_policy.txt",
-        "sla_policy.docx",
-        "vpn_faq.txt",
-        "support_faq.pdf"
+        "leave_policy.txt"
       ],
-      "response_ms": 7.8,
+      "response_ms": 9.06,
       "retrieval_hit": true,
       "answer_hit": true
     },
@@ -118,12 +115,9 @@
       ],
       "answer": "Leave requests must be submitted at least 3 business days before the planned absence.",
       "source_files": [
-        "leave_policy.txt",
-        "expense_policy.docx",
-        "onboarding_guide.txt",
-        "vpn_faq.txt"
+        "leave_policy.txt"
       ],
-      "response_ms": 7.28,
+      "response_ms": 7.49,
       "retrieval_hit": true,
       "answer_hit": true
     },
@@ -136,12 +130,9 @@
       ],
       "answer": "Full-time employees receive 15 annual leave days each calendar year.",
       "source_files": [
-        "leave_policy.txt",
-        "onboarding_guide.txt",
-        "vpn_faq.txt",
-        "support_faq.pdf"
+        "leave_policy.txt"
       ],
-      "response_ms": 7.04,
+      "response_ms": 8.17,
       "retrieval_hit": true,
       "answer_hit": false
     },
@@ -152,14 +143,11 @@
       "expected_keywords": [
         "30 days"
       ],
-      "answer": "Taxi receipts must be submitted within 30 days.",
+      "answer": "[CONTEXT]\n[Source 1] file=expense_policy.docx; chunk=2\n章节：expense_policy.docx\nTaxi receipts must be submitted within 30 days.",
       "source_files": [
-        "expense_policy.docx",
-        "leave_policy.txt",
-        "product_manual.pdf",
-        "security_policy.docx"
+        "expense_policy.docx"
       ],
-      "response_ms": 6.76,
+      "response_ms": 23.28,
       "retrieval_hit": true,
       "answer_hit": true
     },
@@ -171,14 +159,11 @@
         "invoice",
         "manager approval"
       ],
-      "answer": "Hotel reimbursement requires an invoice and manager approval.",
+      "answer": "[CONTEXT]\n[Source 1] file=expense_policy.docx; chunk=3\n章节：expense_policy.docx\nHotel reimbursement requires an invoice and manager approval.",
       "source_files": [
-        "expense_policy.docx",
-        "onboarding_guide.txt",
-        "leave_policy.txt",
-        "product_manual.pdf"
+        "expense_policy.docx"
       ],
-      "response_ms": 6.34,
+      "response_ms": 19.34,
       "retrieval_hit": true,
       "answer_hit": true
     },
@@ -189,14 +174,11 @@
       "expected_keywords": [
         "120 CNY"
       ],
-      "answer": "Meal reimbursement is capped at 120 CNY per person per day.",
+      "answer": "[CONTEXT]\n[Source 1] file=expense_policy.docx; chunk=4\n章节：expense_policy.docx\nMeal reimbursement is capped at 120 CNY per person per day.",
       "source_files": [
-        "expense_policy.docx",
-        "onboarding_guide.txt",
-        "vpn_faq.txt",
-        "leave_policy.txt"
+        "expense_policy.docx"
       ],
-      "response_ms": 6.89,
+      "response_ms": 18.48,
       "retrieval_hit": true,
       "answer_hit": true
     },
@@ -209,12 +191,9 @@
       ],
       "answer": "The Atlas device supports offline sync every 10 minutes.",
       "source_files": [
-        "product_manual.pdf",
-        "leave_policy.txt",
-        "sla_policy.docx",
-        "expense_policy.docx"
+        "product_manual.pdf"
       ],
-      "response_ms": 5.97,
+      "response_ms": 8.14,
       "retrieval_hit": true,
       "answer_hit": true
     },
@@ -228,12 +207,9 @@
       ],
       "answer": "The default admin password must be changed during first login.",
       "source_files": [
-        "product_manual.pdf",
-        "onboarding_guide.txt",
-        "support_faq.pdf",
-        "leave_policy.txt"
+        "product_manual.pdf"
       ],
-      "response_ms": 7.63,
+      "response_ms": 7.8,
       "retrieval_hit": true,
       "answer_hit": true
     },
@@ -246,12 +222,9 @@
       ],
       "answer": "Firmware updates are installed from the system settings page.",
       "source_files": [
-        "product_manual.pdf",
-        "security_policy.docx",
-        "sla_policy.docx",
-        "vpn_faq.txt"
+        "product_manual.pdf"
       ],
-      "response_ms": 6.9,
+      "response_ms": 18.43,
       "retrieval_hit": true,
       "answer_hit": true
     },
@@ -265,12 +238,9 @@
       ],
       "answer": "If VPN login fails, reset the MFA token and retry with the company account.",
       "source_files": [
-        "vpn_faq.txt",
-        "expense_policy.docx",
-        "product_manual.pdf",
-        "leave_policy.txt"
+        "vpn_faq.txt"
       ],
-      "response_ms": 7.04,
+      "response_ms": 8.4,
       "retrieval_hit": true,
       "answer_hit": true
     },
@@ -283,12 +253,9 @@
       ],
       "answer": "VPN access is disabled automatically after 45 days of inactivity.",
       "source_files": [
-        "vpn_faq.txt",
-        "expense_policy.docx",
-        "leave_policy.txt",
-        "product_manual.pdf"
+        "vpn_faq.txt"
       ],
-      "response_ms": 6.67,
+      "response_ms": 18.56,
       "retrieval_hit": true,
       "answer_hit": true
     },
@@ -301,12 +268,9 @@
       ],
       "answer": "Remote employees should use the Asia gateway for best latency.",
       "source_files": [
-        "vpn_faq.txt",
-        "leave_policy.txt",
-        "sla_policy.docx",
-        "expense_policy.docx"
+        "vpn_faq.txt"
       ],
-      "response_ms": 6.88,
+      "response_ms": 17.21,
       "retrieval_hit": true,
       "answer_hit": true
     },
@@ -319,12 +283,9 @@
       ],
       "answer": "The default admin password must be changed during first login.",
       "source_files": [
-        "onboarding_guide.txt",
-        "vpn_faq.txt",
-        "product_manual.pdf",
-        "sla_policy.docx"
+        "product_manual.pdf"
       ],
-      "response_ms": 5.58,
+      "response_ms": 17.13,
       "retrieval_hit": false,
       "answer_hit": false
     },
@@ -335,14 +296,11 @@
       "expected_keywords": [
         "document vault"
       ],
-      "answer": "Sensitive files must be stored only in the approved document vault.",
+      "answer": "[CONTEXT]\n[Source 1] file=security_policy.docx; chunk=3\n章节：security_policy.docx\nSensitive files must be stored only in the approved document vault.",
       "source_files": [
-        "security_policy.docx",
-        "expense_policy.docx",
-        "onboarding_guide.txt",
-        "support_faq.pdf"
+        "security_policy.docx"
       ],
-      "response_ms": 7.66,
+      "response_ms": 17.79,
       "retrieval_hit": true,
       "answer_hit": true
     },
@@ -354,14 +312,11 @@
         "prohibited",
         "IT security"
       ],
-      "answer": "USB storage devices are prohibited unless approved by IT security.",
+      "answer": "[CONTEXT]\n[Source 1] file=security_policy.docx; chunk=4\n章节：security_policy.docx\nUSB storage devices are prohibited unless approved by IT security.",
       "source_files": [
-        "security_policy.docx",
-        "sla_policy.docx",
-        "expense_policy.docx",
-        "onboarding_guide.txt"
+        "security_policy.docx"
       ],
-      "response_ms": 6.9,
+      "response_ms": 19.06,
       "retrieval_hit": true,
       "answer_hit": true
     },
@@ -374,12 +329,9 @@
       ],
       "answer": "Priority P1 tickets require the first response within 15 minutes.",
       "source_files": [
-        "support_faq.pdf",
-        "onboarding_guide.txt",
-        "vpn_faq.txt",
-        "product_manual.pdf"
+        "support_faq.pdf"
       ],
-      "response_ms": 6.21,
+      "response_ms": 7.36,
       "retrieval_hit": true,
       "answer_hit": true
     },
@@ -390,16 +342,13 @@
       "expected_keywords": [
         "billing team"
       ],
-      "answer": "Leave requests must be submitted at least 3 business days before the planned absence.",
+      "answer": "Refund requests are handled by the billing team.",
       "source_files": [
-        "leave_policy.txt",
-        "onboarding_guide.txt",
-        "expense_policy.docx",
-        "sla_policy.docx"
+        "support_faq.pdf"
       ],
-      "response_ms": 6.96,
-      "retrieval_hit": false,
-      "answer_hit": false
+      "response_ms": 17.73,
+      "retrieval_hit": true,
+      "answer_hit": true
     },
     {
       "scenario": "Onboarding",
@@ -410,12 +359,9 @@
       ],
       "answer": "New hires must complete compliance training within 7 days.",
       "source_files": [
-        "onboarding_guide.txt",
-        "product_manual.pdf",
-        "leave_policy.txt",
-        "support_faq.pdf"
+        "onboarding_guide.txt"
       ],
-      "response_ms": 6.3,
+      "response_ms": 8.43,
       "retrieval_hit": true,
       "answer_hit": true
     },
@@ -426,14 +372,11 @@
       "expected_keywords": [
         "2 business days"
       ],
-      "answer": "Standard incidents have a target resolution time of 2 business days.",
+      "answer": "[CONTEXT]\n[Source 1] file=sla_policy.docx; chunk=2\n章节：sla_policy.docx\nStandard incidents have a target resolution time of 2 business days.",
       "source_files": [
-        "sla_policy.docx",
-        "leave_policy.txt",
-        "onboarding_guide.txt",
-        "product_manual.pdf"
+        "sla_policy.docx"
       ],
-      "response_ms": 6.41,
+      "response_ms": 8.62,
       "retrieval_hit": true,
       "answer_hit": true
     },
@@ -444,14 +387,11 @@
       "expected_keywords": [
         "72 hours"
       ],
-      "answer": "Maintenance windows are announced at least 72 hours in advance.",
+      "answer": "[CONTEXT]\n[Source 1] file=sla_policy.docx; chunk=4\n章节：sla_policy.docx\nMaintenance windows are announced at least 72 hours in advance.",
       "source_files": [
-        "sla_policy.docx",
-        "support_faq.pdf",
-        "security_policy.docx",
-        "onboarding_guide.txt"
+        "sla_policy.docx"
       ],
-      "response_ms": 5.89,
+      "response_ms": 8.58,
       "retrieval_hit": true,
       "answer_hit": true
     }

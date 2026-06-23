@@ -57,3 +57,22 @@ def test_invalid_split_params():
 def test_chinese_separators_include_sentence_punctuation():
     for separator in ["\n\n", "。", "！", "？", "，"]:
         assert separator in CHINESE_SEPARATORS
+
+
+def test_split_documents_preserves_structured_field_rows():
+    document = Document(
+        page_content="章节：项目成员\n字段：姓名\n姓名：张三",
+        metadata={
+            "file_name": "profile.docx",
+            "file_extension": ".docx",
+            "section_type": "table_row",
+            "field_keys": "姓名",
+        },
+    )
+
+    chunks = split_documents([document], chunk_size=30, chunk_overlap=10)
+
+    assert len(chunks) == 1
+    assert chunks[0].page_content == document.page_content
+    assert chunks[0].metadata["is_structured_chunk"] is True
+    assert chunks[0].metadata["chunk_type"] == "table_row"

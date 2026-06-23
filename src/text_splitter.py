@@ -20,6 +20,9 @@ CHINESE_SEPARATORS = [
 
 DEFAULT_CHUNK_SIZE = 500
 DEFAULT_CHUNK_OVERLAP = 80
+DOCX_PARAGRAPH_CHUNK_SIZE = 280
+DOCX_PARAGRAPH_CHUNK_OVERLAP = 40
+STRUCTURED_SECTION_TYPES = {"heading", "table_row", "field_block"}
 
 
 @dataclass(frozen=True)
@@ -34,15 +37,19 @@ def split_documents(
     chunk_overlap: int = DEFAULT_CHUNK_OVERLAP,
 ) -> list[Document]:
     _validate_split_params(chunk_size, chunk_overlap)
-
-    splitter = RecursiveCharacterTextSplitter(
-        chunk_size=chunk_size,
-        chunk_overlap=chunk_overlap,
-        separators=CHINESE_SEPARATORS,
-        keep_separator=True,
-        add_start_index=True,
-    )
-    chunks = splitter.split_documents(documents)
+    chunks: list[Document] = []
+    for document in documents:
+        if _should_preserve_as_single_chunk(document, chunk_size):
+            chunks.append(document)
+            continue
+        splitter = RecursiveCharacterTextSplitter(
+            chunk_size=_resolve_chunk_size(document, chunk_size),
+            chunk_overlap=_resolve_chunk_overlap(document, chunk_overlap),
+            separators=CHINESE_SEPARATORS,
+            keep_separator=True,
+            add_start_index=True,
+        )
+        chunks.extend(splitter.split_documents([document]))
     return _normalize_chunk_metadata(chunks, chunk_size, chunk_overlap)
 
 
@@ -79,12 +86,16 @@ def _normalize_chunk_metadata(
 ) -> list[Document]:
     normalized: list[Document] = []
     for chunk_index, chunk in enumerate(chunks):
+        resolved_chunk_size = _resolve_chunk_size(chunk, chunk_size)
+        resolved_chunk_overlap = _resolve_chunk_overlap(chunk, chunk_overlap)
         metadata = {
             **chunk.metadata,
             "chunk_index": chunk_index,
-            "chunk_size": chunk_size,
-            "chunk_overlap": chunk_overlap,
+            "chunk_size": resolved_chunk_size,
+            "chunk_overlap": resolved_chunk_overlap,
             "chunk_length": len(chunk.page_content),
+            "chunk_type": chunk.metadata.get("section_type", "paragraph"),
+            "is_structured_chunk": _is_structured_document(chunk),
         }
         normalized.append(Document(page_content=chunk.page_content, metadata=metadata))
     return normalized
@@ -117,3 +128,27 @@ def _validate_split_params(chunk_size: int, chunk_overlap: int) -> None:
         raise ValueError("chunk_overlap must not be negative")
     if chunk_overlap >= chunk_size:
         raise ValueError("chunk_overlap must be smaller than chunk_size")
+
+
+def _should_preserve_as_single_chunk(document: Document, chunk_size: int) -> bool:
+    if _is_structured_document(document):
+        return True
+    if len(document.page_content) <= min(chunk_size, DOCX_PARAGRAPH_CHUNK_SIZE) and document.metadata.get("file_extension") == ".docx":
+        return True
+    return False
+
+
+def _resolve_chunk_size(document: Document, default_chunk_size: int) -> int:
+    if document.metadata.get("file_extension") == ".docx" and not _is_structured_document(document):
+        return min(default_chunk_size, DOCX_PARAGRAPH_CHUNK_SIZE)
+    return default_chunk_size
+
+
+def _resolve_chunk_overlap(document: Document, default_chunk_overlap: int) -> int:
+    if document.metadata.get("file_extension") == ".docx" and not _is_structured_document(document):
+        return min(default_chunk_overlap, DOCX_PARAGRAPH_CHUNK_OVERLAP)
+    return default_chunk_overlap
+
+
+def _is_structured_document(document: Document) -> bool:
+    return document.metadata.get("section_type") in STRUCTURED_SECTION_TYPES

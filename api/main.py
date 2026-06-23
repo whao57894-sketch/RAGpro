@@ -88,9 +88,16 @@ def create_app(
     )
     app.state.documents = {}
     app.state.document_vectors = {}
+    app.state.document_chunks = {}
     app.state.qa_engine = QAEngine(
         vector_store=app.state.vector_store,
         chat_model=resolved_chat_model,
+        top_k=5,
+        retrieval_top_k=12,
+        max_context_chars=6000,
+        keyword_documents_provider=lambda: [
+            chunk for chunks in app.state.document_chunks.values() for chunk in chunks
+        ],
     )
 
     @app.get("/health")
@@ -141,6 +148,7 @@ def create_app(
         )
         app.state.documents[document_id] = info
         app.state.document_vectors[document_id] = vector_ids
+        app.state.document_chunks[document_id] = chunks
         return UploadResponse(**info.model_dump())
 
     @app.get("/documents", response_model=DocumentListResponse)
@@ -160,6 +168,7 @@ def create_app(
 
         app.state.documents.clear()
         app.state.document_vectors.clear()
+        app.state.document_chunks.clear()
         app.state.qa_engine.clear_cache()
         return ClearResponse(
             cleared_documents=cleared_documents,
