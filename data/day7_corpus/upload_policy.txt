@@ -1,0 +1,1 @@
+Employees can upload PDF, DOCX and TXT documents. The parser converts them into standard Document objects.

@@ -1,0 +1,42 @@
+[
+  {
+    "question": "Why must RAG answers cite source file names?",
+    "expected_file": "answer_policy.txt"
+  },
+  {
+    "question": "What does the vector database store and return?",
+    "expected_file": "vector_policy.txt"
+  },
+  {
+    "question": "What should the system say when documents have no relevant information?",
+    "expected_file": "fallback_policy.txt"
+  },
+  {
+    "question": "Why should text chunks not be too short?",
+    "expected_file": "split_policy.txt"
+  },
+  {
+    "question": "Which separators should Chinese document splitting prefer?",
+    "expected_file": "separator_policy.txt"
+  },
+  {
+    "question": "What does the enterprise knowledge base manage?",
+    "expected_file": "knowledge_base_policy.txt"
+  },
+  {
+    "question": "Which file formats can employees upload?",
+    "expected_file": "upload_policy.txt"
+  },
+  {
+    "question": "Which metadata fields should parsed documents keep?",
+    "expected_file": "metadata_policy.txt"
+  },
+  {
+    "question": "What is embedding-2 used for?",
+    "expected_file": "embedding_policy.txt"
+  },
+  {
+    "question": "Why combine BM25 keyword search with vector search?",
+    "expected_file": "hybrid_policy.txt"
+  }
+]

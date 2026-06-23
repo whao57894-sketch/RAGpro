@@ -1,0 +1,16 @@
+.env
+.venv/
+.venv311/
+__pycache__/
+*.py[cod]
+.pytest_cache/
+pytest-cache-files-*/
+.pip-cache/
+.tmp/
+vendor_wheels/
+local_packages/
+chroma_probe/
+data/uploads/*
+data/vector_store/*
+!data/uploads/.gitkeep
+!data/vector_store/.gitkeep

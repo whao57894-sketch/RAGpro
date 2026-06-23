@@ -1,0 +1,1 @@
+Hybrid retrieval combines BM25 keyword search with vector search to improve recall for exact terms and semantic questions.

@@ -1,0 +1,3 @@
+Enterprise document parsing sample.
+Employees can search policies, product manuals, and FAQ files.
+Parsed documents must keep file metadata for later source citation.

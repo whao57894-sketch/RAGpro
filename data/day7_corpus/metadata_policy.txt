@@ -1,0 +1,1 @@
+Parsed documents must keep metadata including file_name, file_path, file_extension, page and chunk_index.

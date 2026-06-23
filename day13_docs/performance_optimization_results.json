@@ -1,0 +1,57 @@
+{
+  "cache": {
+    "first_ms": 55.53,
+    "second_ms": 0.03,
+    "speedup": 1851.0,
+    "first_cache_hit": false,
+    "second_cache_hit": true,
+    "llm_calls": 1,
+    "stats": {
+      "size": 1,
+      "hits": 1,
+      "misses": 1
+    }
+  },
+  "retrieval_configs": [
+    {
+      "top_k": 2,
+      "retrieval_top_k": 2,
+      "min_similarity_score": null,
+      "rerank": false,
+      "accuracy": 1.0,
+      "elapsed_ms": 13.54
+    },
+    {
+      "top_k": 3,
+      "retrieval_top_k": 5,
+      "min_similarity_score": null,
+      "rerank": true,
+      "accuracy": 1.0,
+      "elapsed_ms": 13.41
+    },
+    {
+      "top_k": 3,
+      "retrieval_top_k": 5,
+      "min_similarity_score": 0.05,
+      "rerank": true,
+      "accuracy": 1.0,
+      "elapsed_ms": 14.96
+    },
+    {
+      "top_k": 4,
+      "retrieval_top_k": 5,
+      "min_similarity_score": 0.05,
+      "rerank": true,
+      "accuracy": 1.0,
+      "elapsed_ms": 18.23
+    }
+  ],
+  "recommended_config": {
+    "top_k": 3,
+    "retrieval_top_k": 5,
+    "min_similarity_score": null,
+    "rerank": true,
+    "accuracy": 1.0,
+    "elapsed_ms": 13.41
+  }
+}

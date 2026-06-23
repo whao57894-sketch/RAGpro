@@ -1,0 +1,459 @@
+{
+  "summary": {
+    "document_count": 8,
+    "question_count": 20,
+    "retrieval_accuracy": 0.9,
+    "answer_accuracy": 0.85,
+    "avg_response_ms": 11.92,
+    "p95_response_ms": 13.29,
+    "max_response_ms": 14.44,
+    "avg_upload_ms": 92.39,
+    "total_runtime_ms": 1134.71,
+    "performance_requirement": "PASS",
+    "notes": [
+      "Uses local deterministic embeddings and a deterministic extractive chat model.",
+      "Validates upload, parsing, chunking, vector write/search, answer generation, citation, and reporting."
+    ]
+  },
+  "uploaded_documents": [
+    {
+      "document_id": "f955c7ff6628422f9d50ed3461b585e3",
+      "file_name": "leave_policy.txt",
+      "saved_path": "data\\uploads\\f955c7ff6628422f9d50ed3461b585e3_leave_policy.txt",
+      "parsed_documents": 1,
+      "chunk_count": 1,
+      "vector_count": 1,
+      "upload_ms": 21.45
+    },
+    {
+      "document_id": "506d10f6b1d34642bd7c69a9aea2041d",
+      "file_name": "expense_policy.docx",
+      "saved_path": "data\\uploads\\506d10f6b1d34642bd7c69a9aea2041d_expense_policy.docx",
+      "parsed_documents": 1,
+      "chunk_count": 1,
+      "vector_count": 1,
+      "upload_ms": 64.44
+    },
+    {
+      "document_id": "a4c8dabeffe04ff580b2cbcb1081b5e2",
+      "file_name": "product_manual.pdf",
+      "saved_path": "data\\uploads\\a4c8dabeffe04ff580b2cbcb1081b5e2_product_manual.pdf",
+      "parsed_documents": 1,
+      "chunk_count": 1,
+      "vector_count": 1,
+      "upload_ms": 470.48
+    },
+    {
+      "document_id": "d0642d316488456aac5e2d1b66210a65",
+      "file_name": "vpn_faq.txt",
+      "saved_path": "data\\uploads\\d0642d316488456aac5e2d1b66210a65_vpn_faq.txt",
+      "parsed_documents": 1,
+      "chunk_count": 1,
+      "vector_count": 1,
+      "upload_ms": 18.2
+    },
+    {
+      "document_id": "229cf80e034d47c2bf5abc5e7c5844b7",
+      "file_name": "security_policy.docx",
+      "saved_path": "data\\uploads\\229cf80e034d47c2bf5abc5e7c5844b7_security_policy.docx",
+      "parsed_documents": 1,
+      "chunk_count": 1,
+      "vector_count": 1,
+      "upload_ms": 54.89
+    },
+    {
+      "document_id": "621f04c7dddb4e64a898234286765d10",
+      "file_name": "support_faq.pdf",
+      "saved_path": "data\\uploads\\621f04c7dddb4e64a898234286765d10_support_faq.pdf",
+      "parsed_documents": 1,
+      "chunk_count": 1,
+      "vector_count": 1,
+      "upload_ms": 31.9
+    },
+    {
+      "document_id": "013ac863231d4b54ab5e884f401d9ff8",
+      "file_name": "onboarding_guide.txt",
+      "saved_path": "data\\uploads\\013ac863231d4b54ab5e884f401d9ff8_onboarding_guide.txt",
+      "parsed_documents": 1,
+      "chunk_count": 1,
+      "vector_count": 1,
+      "upload_ms": 20.31
+    },
+    {
+      "document_id": "941666940ecc4782838c0d0c254428b9",
+      "file_name": "sla_policy.docx",
+      "saved_path": "data\\uploads\\941666940ecc4782838c0d0c254428b9_sla_policy.docx",
+      "parsed_documents": 1,
+      "chunk_count": 1,
+      "vector_count": 1,
+      "upload_ms": 57.47
+    }
+  ],
+  "qa_results": [
+    {
+      "scenario": "HR policy",
+      "question": "How many annual leave days do full-time employees receive?",
+      "expected_file": "leave_policy.txt",
+      "expected_keywords": [
+        "15",
+        "annual leave"
+      ],
+      "answer": "Full-time employees receive 15 annual leave days each calendar year.",
+      "source_files": [
+        "leave_policy.txt",
+        "sla_policy.docx",
+        "vpn_faq.txt",
+        "support_faq.pdf"
+      ],
+      "response_ms": 14.44,
+      "retrieval_hit": true,
+      "answer_hit": true
+    },
+    {
+      "scenario": "HR policy",
+      "question": "How early must leave requests be submitted?",
+      "expected_file": "leave_policy.txt",
+      "expected_keywords": [
+        "3 business days"
+      ],
+      "answer": "Leave requests must be submitted at least 3 business days before the planned absence.",
+      "source_files": [
+        "leave_policy.txt",
+        "expense_policy.docx",
+        "onboarding_guide.txt",
+        "vpn_faq.txt"
+      ],
+      "response_ms": 12.73,
+      "retrieval_hit": true,
+      "answer_hit": true
+    },
+    {
+      "scenario": "HR policy",
+      "question": "How many annual leave days can be carried over?",
+      "expected_file": "leave_policy.txt",
+      "expected_keywords": [
+        "5 carryover days"
+      ],
+      "answer": "Full-time employees receive 15 annual leave days each calendar year.",
+      "source_files": [
+        "leave_policy.txt",
+        "onboarding_guide.txt",
+        "vpn_faq.txt",
+        "support_faq.pdf"
+      ],
+      "response_ms": 13.29,
+      "retrieval_hit": true,
+      "answer_hit": false
+    },
+    {
+      "scenario": "Finance policy",
+      "question": "When must taxi receipts be submitted?",
+      "expected_file": "expense_policy.docx",
+      "expected_keywords": [
+        "30 days"
+      ],
+      "answer": "Taxi receipts must be submitted within 30 days.",
+      "source_files": [
+        "expense_policy.docx",
+        "leave_policy.txt",
+        "product_manual.pdf",
+        "security_policy.docx"
+      ],
+      "response_ms": 11.59,
+      "retrieval_hit": true,
+      "answer_hit": true
+    },
+    {
+      "scenario": "Finance policy",
+      "question": "What is required for hotel reimbursement?",
+      "expected_file": "expense_policy.docx",
+      "expected_keywords": [
+        "invoice",
+        "manager approval"
+      ],
+      "answer": "Hotel reimbursement requires an invoice and manager approval.",
+      "source_files": [
+        "expense_policy.docx",
+        "onboarding_guide.txt",
+        "leave_policy.txt",
+        "product_manual.pdf"
+      ],
+      "response_ms": 12.19,
+      "retrieval_hit": true,
+      "answer_hit": true
+    },
+    {
+      "scenario": "Finance policy",
+      "question": "What is the meal reimbursement cap?",
+      "expected_file": "expense_policy.docx",
+      "expected_keywords": [
+        "120 CNY"
+      ],
+      "answer": "Meal reimbursement is capped at 120 CNY per person per day.",
+      "source_files": [
+        "expense_policy.docx",
+        "onboarding_guide.txt",
+        "vpn_faq.txt",
+        "leave_policy.txt"
+      ],
+      "response_ms": 12.73,
+      "retrieval_hit": true,
+      "answer_hit": true
+    },
+    {
+      "scenario": "Product manual",
+      "question": "How often does the Atlas device perform offline sync?",
+      "expected_file": "product_manual.pdf",
+      "expected_keywords": [
+        "10 minutes"
+      ],
+      "answer": "The Atlas device supports offline sync every 10 minutes.",
+      "source_files": [
+        "product_manual.pdf",
+        "leave_policy.txt",
+        "sla_policy.docx",
+        "expense_policy.docx"
+      ],
+      "response_ms": 11.67,
+      "retrieval_hit": true,
+      "answer_hit": true
+    },
+    {
+      "scenario": "Product manual",
+      "question": "What must happen to the default admin password?",
+      "expected_file": "product_manual.pdf",
+      "expected_keywords": [
+        "changed",
+        "first login"
+      ],
+      "answer": "The default admin password must be changed during first login.",
+      "source_files": [
+        "product_manual.pdf",
+        "onboarding_guide.txt",
+        "support_faq.pdf",
+        "leave_policy.txt"
+      ],
+      "response_ms": 11.43,
+      "retrieval_hit": true,
+      "answer_hit": true
+    },
+    {
+      "scenario": "Product manual",
+      "question": "Where are firmware updates installed from?",
+      "expected_file": "product_manual.pdf",
+      "expected_keywords": [
+        "system settings"
+      ],
+      "answer": "Firmware updates are installed from the system settings page.",
+      "source_files": [
+        "product_manual.pdf",
+        "security_policy.docx",
+        "sla_policy.docx",
+        "vpn_faq.txt"
+      ],
+      "response_ms": 10.87,
+      "retrieval_hit": true,
+      "answer_hit": true
+    },
+    {
+      "scenario": "IT FAQ",
+      "question": "What should an employee do if VPN login fails?",
+      "expected_file": "vpn_faq.txt",
+      "expected_keywords": [
+        "reset",
+        "MFA token"
+      ],
+      "answer": "If VPN login fails, reset the MFA token and retry with the company account.",
+      "source_files": [
+        "vpn_faq.txt",
+        "expense_policy.docx",
+        "product_manual.pdf",
+        "leave_policy.txt"
+      ],
+      "response_ms": 12.33,
+      "retrieval_hit": true,
+      "answer_hit": true
+    },
+    {
+      "scenario": "IT FAQ",
+      "question": "When is VPN access automatically disabled?",
+      "expected_file": "vpn_faq.txt",
+      "expected_keywords": [
+        "45 days"
+      ],
+      "answer": "VPN access is disabled automatically after 45 days of inactivity.",
+      "source_files": [
+        "vpn_faq.txt",
+        "expense_policy.docx",
+        "leave_policy.txt",
+        "product_manual.pdf"
+      ],
+      "response_ms": 10.33,
+      "retrieval_hit": true,
+      "answer_hit": true
+    },
+    {
+      "scenario": "IT FAQ",
+      "question": "Which gateway should remote employees use?",
+      "expected_file": "vpn_faq.txt",
+      "expected_keywords": [
+        "Asia gateway"
+      ],
+      "answer": "Remote employees should use the Asia gateway for best latency.",
+      "source_files": [
+        "vpn_faq.txt",
+        "leave_policy.txt",
+        "sla_policy.docx",
+        "expense_policy.docx"
+      ],
+      "response_ms": 10.3,
+      "retrieval_hit": true,
+      "answer_hit": true
+    },
+    {
+      "scenario": "Security policy",
+      "question": "What is the minimum password length?",
+      "expected_file": "security_policy.docx",
+      "expected_keywords": [
+        "12 characters"
+      ],
+      "answer": "The default admin password must be changed during first login.",
+      "source_files": [
+        "onboarding_guide.txt",
+        "vpn_faq.txt",
+        "product_manual.pdf",
+        "sla_policy.docx"
+      ],
+      "response_ms": 10.39,
+      "retrieval_hit": false,
+      "answer_hit": false
+    },
+    {
+      "scenario": "Security policy",
+      "question": "Where must sensitive files be stored?",
+      "expected_file": "security_policy.docx",
+      "expected_keywords": [
+        "document vault"
+      ],
+      "answer": "Sensitive files must be stored only in the approved document vault.",
+      "source_files": [
+        "security_policy.docx",
+        "expense_policy.docx",
+        "onboarding_guide.txt",
+        "support_faq.pdf"
+      ],
+      "response_ms": 10.86,
+      "retrieval_hit": true,
+      "answer_hit": true
+    },
+    {
+      "scenario": "Security policy",
+      "question": "Are USB storage devices allowed?",
+      "expected_file": "security_policy.docx",
+      "expected_keywords": [
+        "prohibited",
+        "IT security"
+      ],
+      "answer": "USB storage devices are prohibited unless approved by IT security.",
+      "source_files": [
+        "security_policy.docx",
+        "sla_policy.docx",
+        "expense_policy.docx",
+        "onboarding_guide.txt"
+      ],
+      "response_ms": 13.04,
+      "retrieval_hit": true,
+      "answer_hit": true
+    },
+    {
+      "scenario": "Support FAQ",
+      "question": "What is the first response target for P1 tickets?",
+      "expected_file": "support_faq.pdf",
+      "expected_keywords": [
+        "15 minutes"
+      ],
+      "answer": "Priority P1 tickets require the first response within 15 minutes.",
+      "source_files": [
+        "support_faq.pdf",
+        "onboarding_guide.txt",
+        "vpn_faq.txt",
+        "product_manual.pdf"
+      ],
+      "response_ms": 11.74,
+      "retrieval_hit": true,
+      "answer_hit": true
+    },
+    {
+      "scenario": "Support FAQ",
+      "question": "Who handles refund requests?",
+      "expected_file": "support_faq.pdf",
+      "expected_keywords": [
+        "billing team"
+      ],
+      "answer": "Leave requests must be submitted at least 3 business days before the planned absence.",
+      "source_files": [
+        "leave_policy.txt",
+        "onboarding_guide.txt",
+        "expense_policy.docx",
+        "sla_policy.docx"
+      ],
+      "response_ms": 11.77,
+      "retrieval_hit": false,
+      "answer_hit": false
+    },
+    {
+      "scenario": "Onboarding",
+      "question": "When must new hires complete compliance training?",
+      "expected_file": "onboarding_guide.txt",
+      "expected_keywords": [
+        "7 days"
+      ],
+      "answer": "New hires must complete compliance training within 7 days.",
+      "source_files": [
+        "onboarding_guide.txt",
+        "product_manual.pdf",
+        "leave_policy.txt",
+        "support_faq.pdf"
+      ],
+      "response_ms": 13.0,
+      "retrieval_hit": true,
+      "answer_hit": true
+    },
+    {
+      "scenario": "SLA",
+      "question": "What is the target resolution time for standard incidents?",
+      "expected_file": "sla_policy.docx",
+      "expected_keywords": [
+        "2 business days"
+      ],
+      "answer": "Standard incidents have a target resolution time of 2 business days.",
+      "source_files": [
+        "sla_policy.docx",
+        "leave_policy.txt",
+        "onboarding_guide.txt",
+        "product_manual.pdf"
+      ],
+      "response_ms": 12.26,
+      "retrieval_hit": true,
+      "answer_hit": true
+    },
+    {
+      "scenario": "SLA",
+      "question": "How far ahead are maintenance windows announced?",
+      "expected_file": "sla_policy.docx",
+      "expected_keywords": [
+        "72 hours"
+      ],
+      "answer": "Maintenance windows are announced at least 72 hours in advance.",
+      "source_files": [
+        "sla_policy.docx",
+        "support_faq.pdf",
+        "security_policy.docx",
+        "onboarding_guide.txt"
+      ],
+      "response_ms": 11.42,
+      "retrieval_hit": true,
+      "answer_hit": true
+    }
+  ]
+}

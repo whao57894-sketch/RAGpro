@@ -1,0 +1,1 @@
+If uploaded documents do not contain relevant information, the system must say no related information was found.

@@ -1,0 +1,11 @@
+{
+  "python_file_count": 45,
+  "compile_errors": [],
+  "secret_findings": [],
+  "tests": {
+    "returncode": null,
+    "stdout": "",
+    "stderr": ""
+  },
+  "passed": true
+}

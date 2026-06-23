@@ -1,0 +1,1 @@
+Text chunks should not be too short because short chunks lose context. Very long chunks make retrieval less precise.

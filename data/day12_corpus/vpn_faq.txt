@@ -1,0 +1,1 @@
+VPN FAQ. If VPN login fails, reset the MFA token and retry with the company account. VPN access is disabled automatically after 45 days of inactivity. Remote employees should use the Asia gateway for best latency.

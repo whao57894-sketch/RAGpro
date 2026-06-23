@@ -1,0 +1,4 @@
+Enterprise RAG Test Document
+Policy: Employees can ask questions based on uploaded documents.
+Answer requirements: cite document source and avoid unsupported claims.
+Contact: knowledge-base team.

@@ -1,0 +1,1 @@
+The embedding-2 model converts text into vectors so similar text chunks can be found by vector search.
