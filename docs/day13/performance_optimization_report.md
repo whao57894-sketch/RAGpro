@@ -2,9 +2,9 @@
 
 ## Cache Result
 
-- First request: 55.53 ms
-- Repeated request: 0.03 ms
-- Speedup: 1851.0x
+- First request: 53.05 ms
+- Repeated request: 0.06 ms
+- Speedup: 884.17x
 - LLM calls: 1
 - Cache stats: {'size': 1, 'hits': 1, 'misses': 1}
 
@@ -12,10 +12,10 @@
 
 | Top-K | Retrieval Top-K | Min similarity | Rerank | Accuracy | Elapsed ms |
 | ---: | ---: | --- | --- | ---: | ---: |
-| 2 | 2 | None | False | 100.00% | 13.54 |
-| 3 | 5 | None | True | 100.00% | 13.41 |
-| 3 | 5 | 0.05 | True | 100.00% | 14.96 |
-| 4 | 5 | 0.05 | True | 100.00% | 18.23 |
+| 2 | 2 | None | False | 100.00% | 14.61 |
+| 3 | 5 | None | True | 100.00% | 13.09 |
+| 3 | 5 | 0.05 | True | 100.00% | 20.63 |
+| 4 | 5 | 0.05 | True | 100.00% | 25.77 |
 
 ## Recommended Configuration
 

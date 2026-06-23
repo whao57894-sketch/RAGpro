@@ -18,7 +18,7 @@ def main() -> None:
     if not vector:
         raise SystemExit("Empty embedding returned")
 
-    output_path = Path("day5_docs/zhipu_embedding_result.txt")
+    output_path = Path("docs/day5/zhipu_embedding_result.txt")
     output_path.parent.mkdir(parents=True, exist_ok=True)
     output_path.write_text(
         f"dimension={len(vector)}\nfirst_5={vector[:5]}\n",

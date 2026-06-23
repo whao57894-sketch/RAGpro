@@ -8,7 +8,7 @@ from typing import Any
 
 
 ROOT_DIR = Path(__file__).resolve().parents[2]
-REPORT_DIR = ROOT_DIR / "day15_docs"
+REPORT_DIR = ROOT_DIR / "docs" / "day15"
 REPORT_PATH = REPORT_DIR / "code_quality_report.md"
 RESULTS_PATH = REPORT_DIR / "code_quality_results.json"
 

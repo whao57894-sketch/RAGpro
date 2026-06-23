@@ -41,7 +41,7 @@ def main() -> None:
     if not results or "向量数据库" not in results[0].page_content:
         raise SystemExit(f"Unexpected retrieval results: {results}")
 
-    output_path = Path("day5_docs/vector_store_result.txt")
+    output_path = Path("docs/day5/vector_store_result.txt")
     output_path.parent.mkdir(parents=True, exist_ok=True)
     output_path.write_text(
         "\n".join(

@@ -4,11 +4,11 @@
     "question_count": 20,
     "retrieval_accuracy": 0.9,
     "answer_accuracy": 0.85,
-    "avg_response_ms": 11.92,
-    "p95_response_ms": 13.29,
-    "max_response_ms": 14.44,
-    "avg_upload_ms": 92.39,
-    "total_runtime_ms": 1134.71,
+    "avg_response_ms": 12.13,
+    "p95_response_ms": 15.21,
+    "max_response_ms": 16.65,
+    "avg_upload_ms": 90.3,
+    "total_runtime_ms": 1169.62,
     "performance_requirement": "PASS",
     "notes": [
       "Uses local deterministic embeddings and a deterministic extractive chat model.",
@@ -17,76 +17,76 @@
   },
   "uploaded_documents": [
     {
-      "document_id": "f955c7ff6628422f9d50ed3461b585e3",
+      "document_id": "734556b0bf994392bb37a1ef1caa51b7",
       "file_name": "leave_policy.txt",
-      "saved_path": "data\\uploads\\f955c7ff6628422f9d50ed3461b585e3_leave_policy.txt",
+      "saved_path": "data\\uploads\\734556b0bf994392bb37a1ef1caa51b7_leave_policy.txt",
       "parsed_documents": 1,
       "chunk_count": 1,
       "vector_count": 1,
-      "upload_ms": 21.45
+      "upload_ms": 33.11
     },
     {
-      "document_id": "506d10f6b1d34642bd7c69a9aea2041d",
+      "document_id": "eecded3b9ce64a09a7d285b1defcdc9b",
       "file_name": "expense_policy.docx",
-      "saved_path": "data\\uploads\\506d10f6b1d34642bd7c69a9aea2041d_expense_policy.docx",
+      "saved_path": "data\\uploads\\eecded3b9ce64a09a7d285b1defcdc9b_expense_policy.docx",
       "parsed_documents": 1,
       "chunk_count": 1,
       "vector_count": 1,
-      "upload_ms": 64.44
+      "upload_ms": 66.64
     },
     {
-      "document_id": "a4c8dabeffe04ff580b2cbcb1081b5e2",
+      "document_id": "f86c5abb850e429f9d7ce1f819f4eac1",
       "file_name": "product_manual.pdf",
-      "saved_path": "data\\uploads\\a4c8dabeffe04ff580b2cbcb1081b5e2_product_manual.pdf",
+      "saved_path": "data\\uploads\\f86c5abb850e429f9d7ce1f819f4eac1_product_manual.pdf",
       "parsed_documents": 1,
       "chunk_count": 1,
       "vector_count": 1,
-      "upload_ms": 470.48
+      "upload_ms": 498.11
     },
     {
-      "document_id": "d0642d316488456aac5e2d1b66210a65",
+      "document_id": "eb686338108f47b7b40824aff41df12f",
       "file_name": "vpn_faq.txt",
-      "saved_path": "data\\uploads\\d0642d316488456aac5e2d1b66210a65_vpn_faq.txt",
+      "saved_path": "data\\uploads\\eb686338108f47b7b40824aff41df12f_vpn_faq.txt",
       "parsed_documents": 1,
       "chunk_count": 1,
       "vector_count": 1,
-      "upload_ms": 18.2
+      "upload_ms": 18.26
     },
     {
-      "document_id": "229cf80e034d47c2bf5abc5e7c5844b7",
+      "document_id": "11c601aa1abe428aac9146c1bb6e8af3",
       "file_name": "security_policy.docx",
-      "saved_path": "data\\uploads\\229cf80e034d47c2bf5abc5e7c5844b7_security_policy.docx",
+      "saved_path": "data\\uploads\\11c601aa1abe428aac9146c1bb6e8af3_security_policy.docx",
       "parsed_documents": 1,
       "chunk_count": 1,
       "vector_count": 1,
-      "upload_ms": 54.89
+      "upload_ms": 30.56
     },
     {
-      "document_id": "621f04c7dddb4e64a898234286765d10",
+      "document_id": "630c6ca1b99a47a8883bea28a3133e26",
       "file_name": "support_faq.pdf",
-      "saved_path": "data\\uploads\\621f04c7dddb4e64a898234286765d10_support_faq.pdf",
+      "saved_path": "data\\uploads\\630c6ca1b99a47a8883bea28a3133e26_support_faq.pdf",
       "parsed_documents": 1,
       "chunk_count": 1,
       "vector_count": 1,
-      "upload_ms": 31.9
+      "upload_ms": 19.91
     },
     {
-      "document_id": "013ac863231d4b54ab5e884f401d9ff8",
+      "document_id": "b72260b1fca64d8fb9ec6a75f9b38055",
       "file_name": "onboarding_guide.txt",
-      "saved_path": "data\\uploads\\013ac863231d4b54ab5e884f401d9ff8_onboarding_guide.txt",
+      "saved_path": "data\\uploads\\b72260b1fca64d8fb9ec6a75f9b38055_onboarding_guide.txt",
       "parsed_documents": 1,
       "chunk_count": 1,
       "vector_count": 1,
-      "upload_ms": 20.31
+      "upload_ms": 18.36
     },
     {
-      "document_id": "941666940ecc4782838c0d0c254428b9",
+      "document_id": "7841e472c9c74a06b487a183513127ec",
       "file_name": "sla_policy.docx",
-      "saved_path": "data\\uploads\\941666940ecc4782838c0d0c254428b9_sla_policy.docx",
+      "saved_path": "data\\uploads\\7841e472c9c74a06b487a183513127ec_sla_policy.docx",
       "parsed_documents": 1,
       "chunk_count": 1,
       "vector_count": 1,
-      "upload_ms": 57.47
+      "upload_ms": 37.45
     }
   ],
   "qa_results": [
@@ -105,7 +105,7 @@
         "vpn_faq.txt",
         "support_faq.pdf"
       ],
-      "response_ms": 14.44,
+      "response_ms": 16.65,
       "retrieval_hit": true,
       "answer_hit": true
     },
@@ -123,7 +123,7 @@
         "onboarding_guide.txt",
         "vpn_faq.txt"
       ],
-      "response_ms": 12.73,
+      "response_ms": 11.16,
       "retrieval_hit": true,
       "answer_hit": true
     },
@@ -141,7 +141,7 @@
         "vpn_faq.txt",
         "support_faq.pdf"
       ],
-      "response_ms": 13.29,
+      "response_ms": 10.84,
       "retrieval_hit": true,
       "answer_hit": false
     },
@@ -159,7 +159,7 @@
         "product_manual.pdf",
         "security_policy.docx"
       ],
-      "response_ms": 11.59,
+      "response_ms": 12.38,
       "retrieval_hit": true,
       "answer_hit": true
     },
@@ -178,7 +178,7 @@
         "leave_policy.txt",
         "product_manual.pdf"
       ],
-      "response_ms": 12.19,
+      "response_ms": 13.0,
       "retrieval_hit": true,
       "answer_hit": true
     },
@@ -196,7 +196,7 @@
         "vpn_faq.txt",
         "leave_policy.txt"
       ],
-      "response_ms": 12.73,
+      "response_ms": 13.99,
       "retrieval_hit": true,
       "answer_hit": true
     },
@@ -214,7 +214,7 @@
         "sla_policy.docx",
         "expense_policy.docx"
       ],
-      "response_ms": 11.67,
+      "response_ms": 15.21,
       "retrieval_hit": true,
       "answer_hit": true
     },
@@ -233,7 +233,7 @@
         "support_faq.pdf",
         "leave_policy.txt"
       ],
-      "response_ms": 11.43,
+      "response_ms": 14.98,
       "retrieval_hit": true,
       "answer_hit": true
     },
@@ -251,7 +251,7 @@
         "sla_policy.docx",
         "vpn_faq.txt"
       ],
-      "response_ms": 10.87,
+      "response_ms": 11.0,
       "retrieval_hit": true,
       "answer_hit": true
     },
@@ -270,7 +270,7 @@
         "product_manual.pdf",
         "leave_policy.txt"
       ],
-      "response_ms": 12.33,
+      "response_ms": 10.65,
       "retrieval_hit": true,
       "answer_hit": true
     },
@@ -288,7 +288,7 @@
         "leave_policy.txt",
         "product_manual.pdf"
       ],
-      "response_ms": 10.33,
+      "response_ms": 9.72,
       "retrieval_hit": true,
       "answer_hit": true
     },
@@ -306,7 +306,7 @@
         "sla_policy.docx",
         "expense_policy.docx"
       ],
-      "response_ms": 10.3,
+      "response_ms": 11.79,
       "retrieval_hit": true,
       "answer_hit": true
     },
@@ -324,7 +324,7 @@
         "product_manual.pdf",
         "sla_policy.docx"
       ],
-      "response_ms": 10.39,
+      "response_ms": 11.73,
       "retrieval_hit": false,
       "answer_hit": false
     },
@@ -342,7 +342,7 @@
         "onboarding_guide.txt",
         "support_faq.pdf"
       ],
-      "response_ms": 10.86,
+      "response_ms": 11.36,
       "retrieval_hit": true,
       "answer_hit": true
     },
@@ -361,7 +361,7 @@
         "expense_policy.docx",
         "onboarding_guide.txt"
       ],
-      "response_ms": 13.04,
+      "response_ms": 11.85,
       "retrieval_hit": true,
       "answer_hit": true
     },
@@ -379,7 +379,7 @@
         "vpn_faq.txt",
         "product_manual.pdf"
       ],
-      "response_ms": 11.74,
+      "response_ms": 12.07,
       "retrieval_hit": true,
       "answer_hit": true
     },
@@ -397,7 +397,7 @@
         "expense_policy.docx",
         "sla_policy.docx"
       ],
-      "response_ms": 11.77,
+      "response_ms": 13.32,
       "retrieval_hit": false,
       "answer_hit": false
     },
@@ -415,7 +415,7 @@
         "leave_policy.txt",
         "support_faq.pdf"
       ],
-      "response_ms": 13.0,
+      "response_ms": 9.05,
       "retrieval_hit": true,
       "answer_hit": true
     },
@@ -433,7 +433,7 @@
         "onboarding_guide.txt",
         "product_manual.pdf"
       ],
-      "response_ms": 12.26,
+      "response_ms": 10.84,
       "retrieval_hit": true,
       "answer_hit": true
     },
@@ -451,7 +451,7 @@
         "security_policy.docx",
         "onboarding_guide.txt"
       ],
-      "response_ms": 11.42,
+      "response_ms": 11.08,
       "retrieval_hit": true,
       "answer_hit": true
     }

@@ -21,7 +21,7 @@ def main() -> None:
     if missing:
         raise SystemExit(f"PDF text extraction failed, missing: {missing}\nExtracted text:\n{text}")
 
-    output_path = Path("day2_docs/pdf_parse_result.txt")
+    output_path = Path("docs/day2/pdf_parse_result.txt")
     output_path.parent.mkdir(parents=True, exist_ok=True)
     output_path.write_text(text, encoding="utf-8")
     print("PDF parsing OK")

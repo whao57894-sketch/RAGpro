@@ -53,7 +53,7 @@ def main() -> None:
         print(output_lines[-2])
         print()
 
-    output_path = Path("day6_docs/qa_engine_result.txt")
+    output_path = Path("docs/day6/qa_engine_result.txt")
     output_path.parent.mkdir(parents=True, exist_ok=True)
     output_path.write_text("\n".join(output_lines), encoding="utf-8")
     print(f"Saved {output_path}")

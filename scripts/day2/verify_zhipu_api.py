@@ -30,7 +30,7 @@ def main() -> None:
     )
 
     answer = response.choices[0].message.content
-    output_path = Path("day2_docs/zhipu_api_result.txt")
+    output_path = Path("docs/day2/zhipu_api_result.txt")
     output_path.parent.mkdir(parents=True, exist_ok=True)
     output_path.write_text(answer, encoding="utf-8")
     print("Zhipu API OK")

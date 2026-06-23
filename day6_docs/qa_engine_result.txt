@@ -1,7 +1,0 @@
-Q: 回答为什么要标注出处？
-A: 回答必须基于检索到的文本块，并标注文件名和出处。
-Sources: answer_policy.txt, vector_policy.txt
-
-Q: 向量数据库负责什么？
-A: 向量数据库负责存储文本块 embedding，并按相似度返回 Top-K 结果。
-Sources: vector_policy.txt, answer_policy.txt

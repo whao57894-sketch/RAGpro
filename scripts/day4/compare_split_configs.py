@@ -68,7 +68,7 @@ def main() -> None:
         output_lines.append(chunk.page_content.strip())
         output_lines.append("")
 
-    output_path = Path("day4_docs/split_comparison.md")
+    output_path = Path("docs/day4/split_comparison.md")
     output_path.parent.mkdir(parents=True, exist_ok=True)
     output_path.write_text("\n".join(output_lines), encoding="utf-8")
 

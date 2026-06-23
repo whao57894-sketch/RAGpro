@@ -21,7 +21,7 @@ from src.llm import ChatModel
 
 
 CORPUS_DIR = Path("data/day12_corpus")
-REPORT_DIR = Path("day12_docs")
+REPORT_DIR = Path("docs/day12")
 REPORT_PATH = REPORT_DIR / "system_integration_report.md"
 RESULTS_PATH = REPORT_DIR / "system_integration_results.json"
 

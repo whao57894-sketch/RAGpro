@@ -16,7 +16,7 @@ from src.qa_engine import InMemoryQACache, QAEngine
 from src.vector_store import ChromaVectorStore
 
 
-REPORT_DIR = Path("day13_docs")
+REPORT_DIR = Path("docs/day13")
 REPORT_PATH = REPORT_DIR / "performance_optimization_report.md"
 RESULTS_PATH = REPORT_DIR / "performance_optimization_results.json"
 

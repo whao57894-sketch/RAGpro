@@ -39,7 +39,7 @@ RAG/
 │   └── *_samples/          # 测试样例文档
 ├── scripts/                # 每个阶段的验证脚本
 ├── tests/                  # 自动化测试
-├── day*_docs/              # 阶段验证报告和结果
+├── docs/                   # 阶段验证报告和结果
 ├── requirements.txt        # 完整依赖
 ├── requirements-lite.txt   # 轻量依赖
 ├── .env.example            # 环境变量模板
@@ -208,9 +208,9 @@ $env:RAG_API_BASE_URL="http://127.0.0.1:8000"
 
 对应报告会生成在：
 
-- `day12_docs/`
-- `day13_docs/`
-- `day15_docs/`
+- `docs/day12/`
+- `docs/day13/`
+- `docs/day15/`
 
 ## 运行时数据说明
 

@@ -14,7 +14,7 @@ from src.vector_store import ChromaVectorStore
 
 
 def main() -> None:
-    eval_set_path = Path("day7_docs/eval_set.json")
+    eval_set_path = Path("docs/day7/eval_set.json")
     eval_items = json.loads(eval_set_path.read_text(encoding="utf-8"))
 
     sample_paths = sorted(Path("data/day7_corpus").glob("*.txt"))
@@ -75,7 +75,7 @@ def main() -> None:
             ]
         )
 
-    output_path = Path("day7_docs/retrieval_comparison.md")
+    output_path = Path("docs/day7/retrieval_comparison.md")
     output_path.parent.mkdir(parents=True, exist_ok=True)
     output_path.write_text("\n".join(output_lines), encoding="utf-8")
 

@@ -35,7 +35,7 @@ def main() -> None:
     if "cite document sources" not in document:
         raise SystemExit(f"Unexpected Chroma result: {result}")
 
-    output_path = Path("day2_docs/chroma_result.txt")
+    output_path = Path("docs/day2/chroma_result.txt")
     output_path.parent.mkdir(parents=True, exist_ok=True)
     output_path.write_text(f"document={document}\nmetadata={metadata}\n", encoding="utf-8")
     print("ChromaDB OK")

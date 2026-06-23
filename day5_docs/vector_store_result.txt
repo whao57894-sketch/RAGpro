@@ -1,3 +1,0 @@
-inserted_ids=['upload_policy.txt-0-0-4dcedaf6', 'answer_policy.txt-0-1-cee063a6', 'vector_policy.txt-0-2-94c9b066']
-top_1=向量数据库负责存储文本块 embedding，并按相似度返回 Top-K 结果。
-top_1_metadata={'chunk_index': 2, 'file_name': 'vector_policy.txt', 'distance': 1.3241679668426514}

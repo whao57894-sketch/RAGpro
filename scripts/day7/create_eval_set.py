@@ -36,7 +36,7 @@ def main() -> None:
     for file_name, content in CORPUS.items():
         (corpus_dir / file_name).write_text(content, encoding="utf-8")
 
-    output_path = Path("day7_docs/eval_set.json")
+    output_path = Path("docs/day7/eval_set.json")
     output_path.parent.mkdir(parents=True, exist_ok=True)
     output_path.write_text(json.dumps(EVAL_ITEMS, ensure_ascii=False, indent=2), encoding="utf-8")
     print(f"Saved {output_path}")

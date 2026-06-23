@@ -1,2 +1,0 @@
-document=Answers must cite document sources and avoid unsupported claims.
-metadata={'page': 1, 'source': 'enterprise_policy_test.pdf'}
