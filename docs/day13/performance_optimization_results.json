@@ -1,8 +1,8 @@
 {
   "cache": {
-    "first_ms": 53.05,
-    "second_ms": 0.06,
-    "speedup": 884.17,
+    "first_ms": 52.57,
+    "second_ms": 0.04,
+    "speedup": 1314.25,
     "first_cache_hit": false,
     "second_cache_hit": true,
     "llm_calls": 1,
@@ -19,7 +19,7 @@
       "min_similarity_score": null,
       "rerank": false,
       "accuracy": 1.0,
-      "elapsed_ms": 14.61
+      "elapsed_ms": 8.09
     },
     {
       "top_k": 3,
@@ -27,7 +27,7 @@
       "min_similarity_score": null,
       "rerank": true,
       "accuracy": 1.0,
-      "elapsed_ms": 13.09
+      "elapsed_ms": 6.72
     },
     {
       "top_k": 3,
@@ -35,7 +35,7 @@
       "min_similarity_score": 0.05,
       "rerank": true,
       "accuracy": 1.0,
-      "elapsed_ms": 20.63
+      "elapsed_ms": 8.57
     },
     {
       "top_k": 4,
@@ -43,7 +43,7 @@
       "min_similarity_score": 0.05,
       "rerank": true,
       "accuracy": 1.0,
-      "elapsed_ms": 25.77
+      "elapsed_ms": 8.17
     }
   ],
   "recommended_config": {
@@ -52,6 +52,6 @@
     "min_similarity_score": null,
     "rerank": true,
     "accuracy": 1.0,
-    "elapsed_ms": 13.09
+    "elapsed_ms": 6.72
   }
 }

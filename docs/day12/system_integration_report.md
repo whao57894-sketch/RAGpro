@@ -10,49 +10,49 @@ This report validates the complete offline API flow: upload documents, parse, sp
 - Evaluation questions: 20
 - Retrieval accuracy: 90.00%
 - Answer accuracy: 85.00%
-- Average QA response time: 12.13 ms
-- P95 QA response time: 15.21 ms
-- Max QA response time: 16.65 ms
-- Average upload time: 90.3 ms
+- Average QA response time: 6.76 ms
+- P95 QA response time: 7.66 ms
+- Max QA response time: 7.8 ms
+- Average upload time: 46.68 ms
 - Performance requirement: PASS
 
 ## Uploaded Documents
 
 | File | Chunks | Vectors | Upload ms |
 | --- | ---: | ---: | ---: |
-| leave_policy.txt | 1 | 1 | 33.11 |
-| expense_policy.docx | 1 | 1 | 66.64 |
-| product_manual.pdf | 1 | 1 | 498.11 |
-| vpn_faq.txt | 1 | 1 | 18.26 |
-| security_policy.docx | 1 | 1 | 30.56 |
-| support_faq.pdf | 1 | 1 | 19.91 |
-| onboarding_guide.txt | 1 | 1 | 18.36 |
-| sla_policy.docx | 1 | 1 | 37.45 |
+| leave_policy.txt | 1 | 1 | 16.85 |
+| expense_policy.docx | 1 | 1 | 46.48 |
+| product_manual.pdf | 1 | 1 | 227.52 |
+| vpn_faq.txt | 1 | 1 | 10.12 |
+| security_policy.docx | 1 | 1 | 21.25 |
+| support_faq.pdf | 1 | 1 | 12.93 |
+| onboarding_guide.txt | 1 | 1 | 12.68 |
+| sla_policy.docx | 1 | 1 | 25.63 |
 
 ## Question Results
 
 | # | Scenario | Expected source | Retrieval | Answer | Response ms |
 | ---: | --- | --- | --- | --- | ---: |
-| 1 | HR policy | leave_policy.txt | PASS | PASS | 16.65 |
-| 2 | HR policy | leave_policy.txt | PASS | PASS | 11.16 |
-| 3 | HR policy | leave_policy.txt | PASS | FAIL | 10.84 |
-| 4 | Finance policy | expense_policy.docx | PASS | PASS | 12.38 |
-| 5 | Finance policy | expense_policy.docx | PASS | PASS | 13.0 |
-| 6 | Finance policy | expense_policy.docx | PASS | PASS | 13.99 |
-| 7 | Product manual | product_manual.pdf | PASS | PASS | 15.21 |
-| 8 | Product manual | product_manual.pdf | PASS | PASS | 14.98 |
-| 9 | Product manual | product_manual.pdf | PASS | PASS | 11.0 |
-| 10 | IT FAQ | vpn_faq.txt | PASS | PASS | 10.65 |
-| 11 | IT FAQ | vpn_faq.txt | PASS | PASS | 9.72 |
-| 12 | IT FAQ | vpn_faq.txt | PASS | PASS | 11.79 |
-| 13 | Security policy | security_policy.docx | FAIL | FAIL | 11.73 |
-| 14 | Security policy | security_policy.docx | PASS | PASS | 11.36 |
-| 15 | Security policy | security_policy.docx | PASS | PASS | 11.85 |
-| 16 | Support FAQ | support_faq.pdf | PASS | PASS | 12.07 |
-| 17 | Support FAQ | support_faq.pdf | FAIL | FAIL | 13.32 |
-| 18 | Onboarding | onboarding_guide.txt | PASS | PASS | 9.05 |
-| 19 | SLA | sla_policy.docx | PASS | PASS | 10.84 |
-| 20 | SLA | sla_policy.docx | PASS | PASS | 11.08 |
+| 1 | HR policy | leave_policy.txt | PASS | PASS | 7.8 |
+| 2 | HR policy | leave_policy.txt | PASS | PASS | 7.28 |
+| 3 | HR policy | leave_policy.txt | PASS | FAIL | 7.04 |
+| 4 | Finance policy | expense_policy.docx | PASS | PASS | 6.76 |
+| 5 | Finance policy | expense_policy.docx | PASS | PASS | 6.34 |
+| 6 | Finance policy | expense_policy.docx | PASS | PASS | 6.89 |
+| 7 | Product manual | product_manual.pdf | PASS | PASS | 5.97 |
+| 8 | Product manual | product_manual.pdf | PASS | PASS | 7.63 |
+| 9 | Product manual | product_manual.pdf | PASS | PASS | 6.9 |
+| 10 | IT FAQ | vpn_faq.txt | PASS | PASS | 7.04 |
+| 11 | IT FAQ | vpn_faq.txt | PASS | PASS | 6.67 |
+| 12 | IT FAQ | vpn_faq.txt | PASS | PASS | 6.88 |
+| 13 | Security policy | security_policy.docx | FAIL | FAIL | 5.58 |
+| 14 | Security policy | security_policy.docx | PASS | PASS | 7.66 |
+| 15 | Security policy | security_policy.docx | PASS | PASS | 6.9 |
+| 16 | Support FAQ | support_faq.pdf | PASS | PASS | 6.21 |
+| 17 | Support FAQ | support_faq.pdf | FAIL | FAIL | 6.96 |
+| 18 | Onboarding | onboarding_guide.txt | PASS | PASS | 6.3 |
+| 19 | SLA | sla_policy.docx | PASS | PASS | 6.41 |
+| 20 | SLA | sla_policy.docx | PASS | PASS | 5.89 |
 
 ## Issues And Solutions
 

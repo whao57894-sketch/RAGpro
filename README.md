@@ -115,7 +115,19 @@ Environment verification OK
 
 ## 运行后端 API
 
-启动 FastAPI 服务：
+最简单的启动方式：
+
+```powershell
+python api/main.py
+```
+
+如果你使用项目里的虚拟环境，也可以写成：
+
+```powershell
+.\.venv311\Scripts\python.exe api/main.py
+```
+
+如果需要开发模式自动重载，再使用 `uvicorn` 命令：
 
 ```powershell
 .\.venv311\Scripts\python.exe -m uvicorn api.main:app --host 127.0.0.1 --port 8000 --reload
